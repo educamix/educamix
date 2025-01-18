@@ -1,0 +1,37 @@
+{
+  "post": [
+    {
+      "id": "124",
+      "title": "A Importância de Testes Automatizados",
+      "content": "Você sabia que a prática de testes automatizados pode salvar seu projeto de muitos problemas? Ao garantir que cada parte do seu código funcione como esperado, você reduz a quantidade de bugs e aumenta a confiabilidade do seu software. Além disso, testes bem implementados facilitam a manutenção e permitem que você faça alterações com mais segurança. Invista tempo na criação de testes e veja como sua qualidade de código melhora! 🔍",
+      "createdAt": "25/09/2024"
+    },
+    {
+      "id": "125",
+      "title": "Dicas para Melhorar Seu Código",
+      "content": "Escrever código limpo é fundamental para a manutenção e compreensão de projetos. Aqui vão algumas dicas: utilize nomes de variáveis descritivos, comente seu código de forma concisa e evite duplicações. Além disso, siga as convenções de estilo da linguagem que está usando. Um código bem estruturado não só facilita o trabalho em equipe, mas também faz a diferença na hora de revisar ou atualizar seu projeto. Lembre-se: a clareza é tão importante quanto a funcionalidade! ✨",
+      "createdAt": "25/09/2024"
+    }
+  ],
+  "user": [
+    {
+      "id": "7816238",
+      "name": "Gabriel",
+      "email": "gbr.antunes@gmail.com",
+      "password": "senha",
+      "roles": [
+        "admin",
+        "teacher"
+      ]
+    },
+    {
+      "id": "87c2",
+      "name": "Professor",
+      "email": "pro@fessor.com",
+      "password": "senha",
+      "roles": [
+        "teacher"
+      ]
+    }
+  ]
+}
