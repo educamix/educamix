@@ -1,7 +1,7 @@
-import { TRequestParams } from "../types/request";
+import { TRequestParams } from '../types/request'
 
 export const httpRequest = async (url: string, params: TRequestParams): Promise<any> => {
-  const { method, headers, body } = params;
+  const { method, headers, body } = params
 
   const options: RequestInit = {
     method,
@@ -9,17 +9,19 @@ export const httpRequest = async (url: string, params: TRequestParams): Promise<
       'Content-Type': 'application/json',
       ...headers,
     },
-    body: body ? JSON.stringify(body) : undefined,
-  };
+    body: body
+      ? JSON.stringify(body)
+      : undefined,
+  }
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(url, options)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
-    return await response.json();
+    return await response.json()
   } catch (error) {
-    console.error('Erro na requisição:', error);
-    throw error;
+    console.error('Erro na requisição:', error)
+    throw error
   }
 }

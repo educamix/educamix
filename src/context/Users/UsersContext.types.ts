@@ -1,4 +1,4 @@
-import { TUser } from "../../types/user";
+import { TUser } from '../../types/user'
 
 export type UsersContextType = {
   users: TUser[];

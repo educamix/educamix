@@ -1,40 +1,39 @@
-import { useState } from 'react';
-import 'tailwindcss/tailwind.css';
-import { getUser, updateUser } from '../../services/user.service';
-import LoadingComponent from '../../components/LoadingComponent';
+import { useState } from 'react'
+import 'tailwindcss/tailwind.css'
+import { getUser, updateUser } from '../../services/user.service'
+import LoadingComponent from '../../components/LoadingComponent'
 
 export default function UserProfile() {
-  const user = getUser();
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const user = getUser()
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmNewPassword, setConfirmNewPassword] = useState('')
 
-
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!name || !email || !newPassword || !confirmNewPassword) {
-      alert('Preencha todos os campos');
-      return;
+      alert('Preencha todos os campos')
+      return
     }
     if (newPassword !== confirmNewPassword) {
-      alert('As senhas não coincidem');
-      return;
+      alert('As senhas não coincidem')
+      return
     }
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      await updateUser({ id: user._id, userData: { name, email, password: newPassword, role: user.role } });
-      alert('Perfil atualizado com sucesso');
-    }catch(err){
-      console.error('Erro ao atualizar perfil', err);
-    }finally{
-      setIsLoading(false);
+      await updateUser({ id: user._id, userData: { name, email, password: newPassword, role: user.role } })
+      alert('Perfil atualizado com sucesso')
+    } catch (err) {
+      console.error('Erro ao atualizar perfil', err)
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
-if(isLoading) return <LoadingComponent />
+  if (isLoading) return <LoadingComponent />
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
@@ -87,5 +86,5 @@ if(isLoading) return <LoadingComponent />
         </form>
       </div>
     </div>
-  );
+  )
 }

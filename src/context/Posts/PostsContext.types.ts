@@ -1,4 +1,4 @@
-import { TPost } from "../../types/posts";
+import { TPost } from '../../types/posts'
 
 export type PostsContextType = {
   posts: TPost[];

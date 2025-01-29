@@ -4,7 +4,7 @@ import './index.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import AppRouter from './routes.tsx'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

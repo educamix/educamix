@@ -1,5 +1,5 @@
-import { Navigate } from 'react-router-dom';
-import { checkAuth } from '../utils/auth';
+import { Navigate } from 'react-router-dom'
+import { checkAuth } from '../utils/auth'
 
 interface PrivateRouteProps {
   children: JSX.Element;
@@ -7,15 +7,15 @@ interface PrivateRouteProps {
 }
 
 export function PrivateRoute({ children, allowedRoles }: PrivateRouteProps) {
-  const role = checkAuth();
+  const role = checkAuth()
 
   if (!role) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" />
   }
 
   if (!allowedRoles.includes(role)) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" />
   }
 
-  return children;
+  return children
 }
