@@ -6,6 +6,7 @@ import Admin from "./pages/Admin";
 import AuthUserProvider from "./context/auth";
 import { PostsProvider } from "./context/Posts/PostsContext";
 import { UsersProvider } from "./context/Users/UsersContext";
+import Quiz from "./pages/Quiz";
 
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -23,6 +24,7 @@ export default function AppRouter() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/" element={<Home />} />
+                  <Route path="/quiz" element={<Quiz />} />
                 </Routes>
               </Suspense>
             </Router>
