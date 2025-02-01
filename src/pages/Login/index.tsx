@@ -1,14 +1,43 @@
 import logo from '../../assets/logo.svg'
 import { Eye, EyeSlash } from '@phosphor-icons/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 import 'tailwindcss/tailwind.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../../context/auth'
+import { AuthContextType } from '../../types/user'
 
 export default function Login() {
-  const [inputUser, setInputUser] = useState('')
-  const [inputPassword, setInputPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const { authenticateUser } = useContext(
+    AuthContext,
+  ) as AuthContextType;
+
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsLoading(true)
+
+    authenticateUser({ email, password }).then(isUserAuthenticated => {
+      isUserAuthenticated?.name ? navigate("/") : setErrorMessage("Credenciais incorretas")
+
+      setIsLoading(false)
+
+      setTimeout(() => formReset(), 3000)
+    })
+  };
+
+  const formReset = () => {
+    setEmail("")
+    setPassword("")
+    setErrorMessage("")
+  }
 
   return (
     <div className={clsx(
@@ -39,7 +68,7 @@ export default function Login() {
           </h2>
         </div>
 
-        <form className="w-full flex flex-col gap-9">
+        <form className="w-full flex flex-col gap-9" onSubmit={handleLoginSubmit}>
           <div className="flex flex-col gap-4">
             <div className={clsx(
               'bg-white/20 rounded-full py-2 px-3 transition-all',
@@ -50,8 +79,8 @@ export default function Login() {
               <input
                 type="text"
                 placeholder="Usuário"
-                value={inputUser}
-                onChange={(e) => setInputUser(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-transparent outline-none text-white"
               />
             </div>
@@ -67,8 +96,8 @@ export default function Login() {
                   ? 'text'
                   : 'password'}
                 placeholder="Senha"
-                value={inputPassword}
-                onChange={(e) => setInputPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-transparent outline-none text-white"
               />
               <button
