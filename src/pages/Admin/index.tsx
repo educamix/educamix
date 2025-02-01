@@ -2,25 +2,16 @@ import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
 import { useUsers } from "../../context/Users/UsersContext";
 import { TUserRole } from "../../types/user";
-import {
-  deleteUser,
-  getUserId,
-  getUserRole,
-  updateUser,
-} from "../../services/user.service";
+import { deleteUser, getUserId, getUserRole, updateUser } from "../../services/user.service";
 import LoadingComponent from "../../components/LoadingComponent";
+import { useNavigate } from "react-router-dom"; // Importing useNavigate
 
 export default function Admin() {
   const [role, setRole] = useState<TUserRole | null>(null);
   const { users, loading, fetchUsers } = useUsers();
+  const navigate = useNavigate(); // Initializing useNavigate
 
-  const changeUserRole = async ({
-    id,
-    newRole,
-  }: {
-    id?: string;
-    newRole: TUserRole;
-  }) => {
+  const changeUserRole = async ({ id, newRole }: { id?: string; newRole: TUserRole }) => {
     if (!id) return;
     const userData = users.find((user) => user._id === id);
     if (!userData) return;
@@ -70,9 +61,17 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen p-4">
-      <h1 className="text-em-pink font-fredoka text-xl font-medium text-center mb-4">
-        Administração de Usuários
-      </h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-em-pink font-fredoka text-xl font-medium text-center">
+          Administração de Usuários
+        </h1>
+        <button
+          onClick={() => navigate("/")}
+          className="bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600"
+        >
+          Home
+        </button>
+      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-md rounded">
           <thead>
@@ -91,26 +90,18 @@ export default function Admin() {
                 <td className="py-2 px-4 border-b">{user.role}</td>
                 <td className="py-2 px-4 border-b">
                   <button
-                    onClick={() =>
-                      changeUserRole({ id: user._id, newRole: "teacher" })
-                    }
+                    onClick={() => changeUserRole({ id: user._id, newRole: "teacher" })}
                     className={`bg-blue-500 text-white px-2 py-1 rounded mr-2 ${
-                      user.role === "teacher"
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
+                      user.role === "teacher" ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                     disabled={user.role === "teacher"}
                   >
                     Tornar Professor
                   </button>
                   <button
-                    onClick={() =>
-                      changeUserRole({ id: user._id, newRole: "student" })
-                    }
+                    onClick={() => changeUserRole({ id: user._id, newRole: "student" })}
                     className={`bg-green-500 text-white px-2 py-1 rounded mr-2 ${
-                      user.role === "student"
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
+                      user.role === "student" ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                     disabled={user.role !== "teacher"}
                   >
