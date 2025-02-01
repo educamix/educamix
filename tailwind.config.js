@@ -12,6 +12,7 @@ export default {
       colors: {
         'em-dark-blue': '#001340',
         'em-blue': '#023583',
+        'em-light-blue': '#0056D9',
         'em-purple': '#853987',
         'em-light-pink': '#FE3E8A',
         'em-pink': '#FE0060',
@@ -19,6 +20,9 @@ export default {
       },
       fontSize: {
         'em-10': '0.625rem',
+      },
+      spacing: {
+        'em-1': '0.0625rem',
       },
     },
   },
