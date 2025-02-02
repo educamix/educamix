@@ -44,7 +44,7 @@ const RankingItem = ({name, position, score, avatar}:RankingItemProps)=>{
                     <img src={avatar} width={50} height={50} alt={name} className="rounded-full" />
                 </div>
                 <div className="flex flex-col">
-                    <div>
+                    <div className="font-fredoka">
                         <p>{name}</p>
                     </div>
                     <div className="flex gap-2">
