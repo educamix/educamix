@@ -112,15 +112,15 @@ const monthlyFrequencyDataMock = [
         participated: true
     },
     {
-        date: "28/01/2025",
+        date: "29/01/2025",
         participated: true
     },
     {
-        date: "28/01/2025",
+        date: "30/01/2025",
         participated: true
     },
     {
-        date: "28/01/2025",
+        date: "31/01/2025",
         participated: false
     },
 ]
