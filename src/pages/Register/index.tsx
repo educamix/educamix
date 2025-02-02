@@ -1,51 +1,49 @@
 import logo from '../../assets/logo.svg'
-import { Eye, EyeSlash } from '@phosphor-icons/react'
 import { Link, useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 import 'tailwindcss/tailwind.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { saveUser } from '../../utils/auth'
 import { newUser } from '../../services/newUser'
 
 export default function Register() {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState('')
+  const [registerPassword, setRegisterPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [name, setName] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleRegisterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (registerPassword !== confirmPassword) {
-      alert("As senhas não coincidem");
+      alert('As senhas não coincidem')
       return;
     }
     setIsLoading(true)
 
     try {
-      
       const response = await newUser({
         email: registerEmail,
         name: name,
         password: registerPassword,
         role: 'student',
-      });
-      console.log('response', response);
+      })
+      console.log('response', response)
       if (!response) {
-        console.log("Erro ao cadastrar usuário");
+        console.log('Erro ao cadastrar usuário')
         return;
       }
-      saveUser({name: response.Name, email: response.Email, role: response.Role, _id: '0'});
-      navigate("/");
+      saveUser({name: response.Name, email: response.Email, role: response.Role, _id: '0'})
+      navigate('/')
     } catch (err) {
-      console.error(err);
+      console.error(err)
     } finally {
       setIsLoading(false)
     }
-  };
+  }
 
 
   return (

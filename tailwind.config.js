@@ -17,6 +17,7 @@ export default {
         'em-pink': '#FE0060',
         'em-salmon': '#FE6675',
         'em-green': '#00FF80',
+        'em-white': '#FFFFFF',
       },
       fontSize: {
         'em-10': '0.625rem',
