@@ -17,13 +17,27 @@ export default function Quiz() {
     },
   ]
 
+  const randomCorrectMessage = [
+    'Parabéns!',
+    'Você acertou!',
+    'Muito bem!',
+    'Excelente!',
+  ]
+
+  const randomWrongMessage = [
+    'Que pena!',
+    'Não foi dessa vez!',
+    'Tente novamente!',
+    'Errado!',
+  ]
+
   const handleQuizSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const formData = new FormData(e.target as HTMLFormElement)
     const selectedAnswer = formData.get('quiz') as string
     setMessage(selectedAnswer === quiz[0].correta
-      ? 'Correto'
-      : 'Errada')
+      ? randomCorrectMessage[Math.floor(Math.random() * randomCorrectMessage.length)]
+      : randomWrongMessage[Math.floor(Math.random() * randomWrongMessage.length)])
   }
 
   return (
