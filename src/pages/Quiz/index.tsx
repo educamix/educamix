@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import clsx from 'clsx';
-import 'tailwindcss/tailwind.css';
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import clsx from 'clsx'
+import 'tailwindcss/tailwind.css'
+import React, { useState } from 'react'
 
 export default function Quiz() {
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+  const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
   const quiz = [
     {
@@ -15,42 +15,42 @@ export default function Quiz() {
       respostas: ['5/6', '1/2', '2/3', '7/12'],
       correta: '5/6',
     },
-  ];
+  ]
 
   const randomCorrectMessage = [
     'Parabéns!',
     'Você acertou!',
     'Muito bem!',
     'Excelente!',
-  ];
+  ]
 
   const randomWrongMessage = [
     'Que pena!',
     'Não foi dessa vez!',
     'Tente novamente!',
     'Errado!',
-  ];
+  ]
 
   const handleQuizSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const selectedAnswer = formData.get('quiz') as string;
+    e.preventDefault()
+    const formData = new FormData(e.target as HTMLFormElement)
+    const selectedAnswer = formData.get('quiz') as string
     setMessage(
       selectedAnswer === quiz[0].correta
         ? randomCorrectMessage[
-            Math.floor(Math.random() * randomCorrectMessage.length)
-          ]
+          Math.floor(Math.random() * randomCorrectMessage.length)
+        ]
         : randomWrongMessage[
-            Math.floor(Math.random() * randomWrongMessage.length)
-          ]
-    );
-  };
+          Math.floor(Math.random() * randomWrongMessage.length)
+        ],
+    )
+  }
 
   return (
     <div
       className={clsx(
         'flex flex-col items-center pt-20 gap-9 w-11/12 max-w-80 mx-auto',
-        'animate-fade-down ease-in'
+        'animate-fade-down ease-in',
       )}
     >
       <div className="flex flex-col gap-6 w-full">
@@ -118,5 +118,5 @@ export default function Quiz() {
         )}
       </div>
     </div>
-  );
+  )
 }
