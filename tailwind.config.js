@@ -12,7 +12,7 @@ export default {
       colors: {
         'em-dark-blue': '#001340',
         'em-blue': '#023583',
-        'em-light-blue': '#0056D9',
+        'em-light-blue': '#177fff',
         'em-purple': '#853987',
         'em-light-pink': '#FE3E8A',
         'em-pink': '#FE0060',

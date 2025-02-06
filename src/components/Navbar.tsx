@@ -9,8 +9,8 @@ import Logout from '../assets/svg/Logout'
 
 interface MenuItemProps {
   linkTo: string
-  isActive: boolean
   children: ReactNode
+  isActive?: boolean
   highlightColor:
     | 'em-light-blue'
     | 'em-purple'
@@ -22,8 +22,8 @@ interface MenuItemProps {
 function MenuItem({
   highlightColor,
   linkTo,
-  isActive,
   children,
+  isActive = false,
 }:MenuItemProps) {
   return (
     <Link
@@ -41,6 +41,10 @@ function MenuItem({
 }
 
 function Navbar() {
+  const location = window.location.pathname
+
+  console.log(location)
+
   return (
     <div
       className={clsx(
@@ -51,7 +55,7 @@ function Navbar() {
       <MenuItem
         linkTo="/"
         highlightColor="em-light-blue"
-        isActive
+        isActive={location === '/'}
       >
         <House />
       </MenuItem>
@@ -59,7 +63,7 @@ function Navbar() {
       <MenuItem
         linkTo="/rank"
         highlightColor="em-purple"
-        isActive
+        isActive={location === '/rank'}
       >
         <Trophy />
       </MenuItem>
@@ -67,7 +71,7 @@ function Navbar() {
       <MenuItem
         linkTo="/profile"
         highlightColor="em-light-pink"
-        isActive
+        isActive={location === '/profile'}
       >
         <Person />
       </MenuItem>
@@ -75,7 +79,7 @@ function Navbar() {
       <MenuItem
         linkTo="/stats"
         highlightColor="em-pink"
-        isActive
+        isActive={location === '/stats'}
       >
         <Stats />
       </MenuItem>
@@ -83,7 +87,7 @@ function Navbar() {
       <MenuItem
         linkTo="/logout"
         highlightColor="em-purple"
-        isActive
+        isActive={location === '/logout'}
       >
         <Logout />
       </MenuItem>
