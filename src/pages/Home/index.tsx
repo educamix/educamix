@@ -30,11 +30,11 @@ export default function Home() {
         </p>
 
         <div className="grid grid-cols-2 gap-4 justify-between">
-          <SubjectCard key="Matemática" label="Matemática" linkTo="/" />
-          <SubjectCard key="Português" label="Português" linkTo="/" />
-          <SubjectCard key="História" label="História" linkTo="/" />
-          <SubjectCard key="Geografia" label="Geografia" linkTo="/" />
-          <SubjectCard key="Ciências" label="Ciências" linkTo="/" />
+          <SubjectCard key="Matemática" label="Matemática" linkTo="/quiz?subject=Matemática" />
+          <SubjectCard key="Português" label="Português" linkTo="/quiz?subject=Português" />
+          <SubjectCard key="História" label="História" linkTo="/quiz?subject=História" />
+          <SubjectCard key="Geografia" label="Geografia" linkTo="/quiz?subject=Geografia" />
+          <SubjectCard key="Ciências" label="Ciências" linkTo="/quiz?subject=Ciências" />
         </div>
       </main>
 

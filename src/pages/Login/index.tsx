@@ -20,7 +20,7 @@ export default function Login() {
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setErrorMessage('') // Clear any previous error
+    setErrorMessage('')
 
     authenticateUser({ email, password }).then(isUserAuthenticated => {
       if (isUserAuthenticated?.name) {
