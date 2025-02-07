@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 import 'tailwindcss/tailwind.css'
 import React, { useState } from 'react'
 
 export default function Quiz() {
   const [message, setMessage] = useState('')
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const quiz = [
     {

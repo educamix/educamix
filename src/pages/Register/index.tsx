@@ -12,7 +12,6 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const navigate = useNavigate()
 
@@ -44,7 +43,6 @@ export default function Register() {
       setIsLoading(false)
     }
   }
-
 
   return (
     <div className={clsx(
@@ -123,7 +121,7 @@ export default function Register() {
                 required
                 className="w-full bg-transparent outline-none text-white"
               />
-            </div>       
+            </div>
 
             <div className={clsx(
               'bg-white/20 rounded-full py-2 px-3 transition-all',
@@ -139,19 +137,23 @@ export default function Register() {
                 required
                 className="w-full bg-transparent outline-none text-white"
               />
-            </div>            
+            </div>
 
           </div>
 
           <div className="flex flex-col gap-3">
             <button
               type="submit"
+              disabled={isLoading}
               className={clsx(
                 'rounded-md bg-em-pink h-10 flex justify-center items-center',
                 'w-full font-inter text-xs font-bold text-white',
+                isLoading && 'opacity-50 cursor-not-allowed'
               )}
             >
-              Cadastre-se
+              {isLoading
+                ? 'Cadastrando...'
+                : 'Cadastre-se'}
             </button>
             <Link
               to="/login"
