@@ -19,7 +19,7 @@ export default function Register() {
     e.preventDefault()
     if (registerPassword !== confirmPassword) {
       alert('As senhas não coincidem')
-      return;
+      return
     }
     setIsLoading(true)
 
@@ -33,7 +33,7 @@ export default function Register() {
       console.log('response', response)
       if (!response) {
         console.log('Erro ao cadastrar usuário')
-        return;
+        return
       }
       saveUser({name: response.Name, email: response.Email, role: response.Role, _id: '0'})
       navigate('/')
