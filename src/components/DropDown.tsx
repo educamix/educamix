@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-import clsx from 'clsx'
 import 'tailwindcss/tailwind.css'
 import React, { useState } from 'react'
 
@@ -9,7 +7,7 @@ interface DropdownProps {
   subjects: string[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ selectedSubject, onSelect, subjects }) => {
+export default function Dropdown({ selectedSubject, onSelect, subjects }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDropdown = () => setIsOpen(!isOpen)
@@ -62,44 +60,6 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedSubject, onSelect, subjects
           </ul>
         </div>
       )}
-    </div>
-  )
-};
-
-export default function Quiz() {
-  const navigate = useNavigate()
-  const [selectedSubject, setSelectedSubject] = useState('Matemática')
-
-  const handleSelectSubject = (subject: string) => setSelectedSubject(subject)
-
-  const handleQuizSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  };
-
-  return (
-    <div
-      className={clsx(
-        'flex flex-col items-center pt-20 gap-9 w-11/12 max-w-80 mx-auto',
-        'animate-fade-down ease-in',
-      )}
-    >
-      <div className="flex flex-col gap-16 w-full">
-        <Dropdown selectedSubject={selectedSubject} onSelect={handleSelectSubject} />
-
-        <form className="w-full flex flex-col gap-9" onSubmit={handleQuizSubmit}>
-          <div className="flex flex-col gap-3">
-            <button
-              type="submit"
-              className={clsx(
-                'rounded-md bg-em-green h-10 flex justify-center items-center',
-                'w-full font-inter text-xs font-bold text-white',
-              )}
-            >
-              Responder
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
   )
 }
