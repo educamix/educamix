@@ -3,40 +3,41 @@ import { Eye, EyeSlash } from '@phosphor-icons/react'
 import { Link, useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 import 'tailwindcss/tailwind.css'
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/auth'
 import { AuthContextType } from '../../types/user'
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const { authenticateUser } = useContext(
-    AuthContext,
-  ) as AuthContextType;
+  const { authenticateUser } = useContext(AuthContext) as AuthContextType
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLoginSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
+    e.preventDefault()
     setIsLoading(true)
+    setErrorMessage('') // Clear any previous error
 
     authenticateUser({ email, password }).then(isUserAuthenticated => {
-      isUserAuthenticated?.name ? navigate("/") : setErrorMessage("Credenciais incorretas")
+      if (isUserAuthenticated?.name) {
+        navigate('/')
+      } else {
+        setErrorMessage('Credenciais incorretas')
+      }
 
       setIsLoading(false)
-
       setTimeout(() => formReset(), 3000)
     })
-  };
+  }
 
   const formReset = () => {
-    setEmail("")
-    setPassword("")
-    setErrorMessage("")
+    setEmail('')
+    setPassword('')
+    setErrorMessage('')
   }
 
   return (
@@ -54,21 +55,15 @@ export default function Login() {
 
       <div className="flex flex-col gap-16 w-full">
         <div className="flex flex-col gap-1">
-          <h1 className={clsx(
-            'text-em-pink font-fredoka text-xl font-medium text-center',
-          )}
-          >
+          <h1 className="text-em-pink font-fredoka text-xl font-medium text-center">
             Bem vindo à Educamix
           </h1>
-          <h2 className={clsx(
-            'text-em-light-pink font-inter text-xs text-center',
-          )}
-          >
+          <h2 className="text-em-light-pink font-inter text-xs text-center">
             Desafie-se! Aprenda! Divirta-se!
           </h2>
         </div>
 
-        <form className="w-full flex flex-col gap-9" onSubmit={handleLoginSubmit}>
+        <form className="w-full flex flex-col gap-6" onSubmit={handleLoginSubmit}>
           <div className="flex flex-col gap-4">
             <div className={clsx(
               'bg-white/20 rounded-full py-2 px-3 transition-all',
@@ -104,30 +99,30 @@ export default function Login() {
                 type="button"
                 onClick={() => setIsPasswordVisible(!isPasswordVisible)}
               >
-                {isPasswordVisible
-                  ? <EyeSlash color="#fff" size={16} />
-                  : <Eye color="#fff" size={16} />}
-
+                {isPasswordVisible ? <EyeSlash color="#fff" size={16} /> : <Eye color="#fff" size={16} />}
               </button>
             </div>
           </div>
 
+          {errorMessage && (
+            <p className="text-red-500 text-xs text-center">{errorMessage}</p>
+          )}
+
           <div className="flex flex-col gap-3">
             <button
               type="submit"
+              disabled={isLoading}
               className={clsx(
                 'rounded-md bg-em-pink h-10 flex justify-center items-center',
                 'w-full font-inter text-xs font-bold text-white',
+                { 'opacity-50 cursor-not-allowed': isLoading },
               )}
             >
-              Acessar
+              {isLoading
+                ? 'Carregando...'
+                : 'Acessar'}
             </button>
-            <Link
-              to="/register"
-              className={clsx(
-                'font-inter text-em-10 text-em-light-pink',
-              )}
-            >
+            <Link to="/register" className="font-inter text-em-10 text-em-light-pink">
               Não tenho uma conta
             </Link>
           </div>
