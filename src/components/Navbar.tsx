@@ -7,6 +7,7 @@ import Person from '../assets/svg/Person'
 import Stats from '../assets/svg/Stats'
 import Logout from '../assets/svg/Logout'
 import { getUserRole, logout } from '../services/user.service'
+import AdminUser from '../assets/svg/AdminUser'
 
 interface MenuItemProps {
   linkTo: string;
@@ -61,6 +62,9 @@ function Navbar() {
           <>
         <MenuItem linkTo="/summary" highlightColor="em-pink" isActive={location === '/stats'}>
           <Stats />
+        </MenuItem>
+        <MenuItem linkTo="/admin" highlightColor="em-pink" isActive={location === '/admin'}>
+          <AdminUser />
         </MenuItem>
           </>
           )}
