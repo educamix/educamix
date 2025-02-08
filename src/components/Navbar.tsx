@@ -6,7 +6,7 @@ import Trophy from '../assets/svg/Trophy'
 import Person from '../assets/svg/Person'
 import Stats from '../assets/svg/Stats'
 import Logout from '../assets/svg/Logout'
-import { logout } from '../services/user.service'
+import { getUserRole, logout } from '../services/user.service'
 
 interface MenuItemProps {
   linkTo: string;
@@ -30,6 +30,7 @@ function MenuItem({ highlightColor, linkTo, children, isActive = false }: MenuIt
 }
 
 function Navbar() {
+  const role = getUserRole()
   const location = window.location.pathname
   const navigate = useNavigate()
   const [isLogoutModalOpen, setLogoutModalOpen] = useState(false)
@@ -56,9 +57,13 @@ function Navbar() {
         <MenuItem linkTo="/profile" highlightColor="em-light-pink" isActive={location === '/profile'}>
           <Person />
         </MenuItem>
+        {role && role === 'teacher' && (
+          <>
         <MenuItem linkTo="/summary" highlightColor="em-pink" isActive={location === '/stats'}>
           <Stats />
         </MenuItem>
+          </>
+          )}
         <button onClick={() => setLogoutModalOpen(true)} className="text-white opacity-80 hover:opacity-100">
           <Logout />
         </button>
