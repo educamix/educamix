@@ -1,3 +1,5 @@
+import { Navbar } from "../../components/Navbar";
+
 const rankingDataMock = [
   {
     name: 'Danilo',
@@ -64,7 +66,7 @@ const RankingItem = ({ name, position, score, avatar }: RankingItemProps) => {
       <div
         className={`flex ${
           position <= 3
-            ? 'absolute right-3 -top-3.5 text-red-500 text-2xl font-bold'
+            ? 'absolute right-3 -top-2.8 text-red-500 text-2xl font-bold'
             : 'items-center'
         } rounded-full px-2 `}
       >
@@ -76,17 +78,25 @@ const RankingItem = ({ name, position, score, avatar }: RankingItemProps) => {
 
 export const Ranking = () => {
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex m-2 p-1 border-b border-[#43556A] min-h-full row-auto">
-        <div className="text-white">
-          <p>Ranking</p>
+    <div className="flex flex-col w-11/12 mx-auto gap-6 pt-16">
+      <header className="flex justify-between">
+        <div className="max-w-60">
+          <h1 className="text-em-pink font-fredoka text-2xl font-medium">Ranking</h1>
         </div>
-      </div>
-      <div className="flex flex-col gap-4 p-1 m-2">
-        {rankingDataMock.map((user) => (
-          <RankingItem key={user.position} {...user} />
-        ))}
-      </div>
+      </header>
+
+      <div className="block w-full h-em-1 bg-white/10" />
+      <main>
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col gap-4 p-1 m-2">
+            {rankingDataMock.map((user) => (
+              <RankingItem key={user.position} {...user} />
+            ))}
+          </div>
+        </div>
+      </main>
+      <Navbar />
     </div>
+
   )
 }

@@ -1,3 +1,5 @@
+import { Navbar } from "../../components/Navbar"
+
 const monthlyFrequencyDataMock = [
   {
     date: '01/01/2025',
@@ -199,7 +201,7 @@ const SummaryCard = ({ title, description, icon }: SummaryCardProps) => (
     <div>
       <p>{title}</p>
     </div>
-    <div className="flex gap-2 justify-between text-[#FE3E8A] font-inter font-bold text-2xl">
+    <div className="flex gap-2 justify-between text-[#FE3E8A] font-inter font-bold text-1xl">
       <span className="material-symbols-outlined">
         {icon}
       </span>
@@ -210,37 +212,44 @@ const SummaryCard = ({ title, description, icon }: SummaryCardProps) => (
 
 export const Summary = () => {
   return (
-    <div className="flex flex-col w-full text-white">
-      <div className="flex m-2 p-1 border-b border-[#43556A] min-h-full row-auto">
-        <div className="text-white">
-          <p>Resumo do aluno</p>
+    <div className="flex flex-col w-11/12 mx-auto gap-6 pt-16">
+      <header className="flex justify-between">
+        <div className="max-w-60">
+          <h1 className="text-em-pink font-fredoka text-2xl font-medium">Resumo do aluno</h1>
         </div>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-4 p-1 m-1 mt-10">
-        {SummaryData.map(user => <SummaryCard key={user.title} {...user} />)}
-      </div>
-      <div className="flex m-2 my-7 p-1 border-b border-[#43556A] min-h-full row-auto" />
-      <div className="flex justify-between m-1 p-1">
-        <p>Frequência mensal</p>
-        <span className="material-symbols-outlined">
-          calendar_today
-        </span>
-      </div>
-      <div>
-        <div className="grid grid-cols-10 gap-2 p-2 m-2">
-          {monthlyFrequencyDataMock.map(day => (
-            <div
-              key={day.date} className={` ${day.participated
-                ? 'bg-[#853987]'
-                : 'bg-[#324050FF]'} rounded-md w-7 h-7`}
-            />
-          ))}
+      </header>
+
+      <div className="block w-full h-em-1 bg-white/10" />
+      <main>
+        <div className="flex flex-col w-full text-white">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 p-1 m-1 mt-10">
+            {SummaryData.map(user => <SummaryCard key={user.title} {...user} />)}
+          </div>
+          <div className="flex m-2 my-7 p-1 border-b border-[#43556A] min-h-full row-auto" />
+          <div className="flex justify-between m-1 p-1">
+            <p>Frequência mensal</p>
+            <span className="material-symbols-outlined">
+              calendar_today
+            </span>
+          </div>
+          <div>
+            <div className="grid grid-cols-10 gap-2 p-2 m-2">
+              {monthlyFrequencyDataMock.map(day => (
+                <div
+                  key={day.date} className={` ${day.participated
+                    ? 'bg-[#853987]'
+                    : 'bg-[#324050FF]'} rounded-md w-7 h-7`}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex m-2 my-7 p-1 border-b border-[#43556A] min-h-full row-auto" />
+          <div className="flex flex-col gap-2 m-2 mb-10">
+            {disciplinesDataMock.map(discipline => <DisciplineItem key={discipline.name} {...discipline} />)}
+          </div>
         </div>
-      </div>
-      <div className="flex m-2 my-7 p-1 border-b border-[#43556A] min-h-full row-auto" />
-      <div className="flex flex-col gap-2 m-2 mb-10">
-        {disciplinesDataMock.map(discipline => <DisciplineItem key={discipline.name} {...discipline} />)}
-      </div>
+      </main>
+      <Navbar />
     </div>
   )
 }

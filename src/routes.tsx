@@ -12,6 +12,7 @@ import { PrivateRoute } from './components/PrivateRoute'
 
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
+const Config = lazy(() => import('./pages/Config'))
 
 export default function AppRouter() {
   return (
@@ -37,6 +38,15 @@ export default function AppRouter() {
                     <>
                       <PrivateRoute allowedRoles={['teacher', 'student']}>
                         <Home />
+                      </PrivateRoute>
+                    </>
+                  }
+                />
+                <Route
+                  path="/profile" element={
+                    <>
+                      <PrivateRoute allowedRoles={['teacher', 'student']}>
+                        <Config />
                       </PrivateRoute>
                     </>
                   }

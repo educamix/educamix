@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import 'tailwindcss/tailwind.css'
 import { getUser, updateUser } from '../../services/user.service'
 import LoadingComponent from '../../components/LoadingComponent'
+import { Navbar } from '../../components/Navbar'
 
 export default function UserProfile() {
   const user = getUser()
@@ -36,12 +37,18 @@ export default function UserProfile() {
   if (isLoading) return <LoadingComponent />
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
-      <div className="bg-white shadow-md p-6 rounded w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">Configuração de Perfil</h1>
+    <div className="flex flex-col w-11/12 mx-auto gap-6 pt-16">
+      <header className="flex justify-between">
+        <div className="max-w-60">
+          <h1 className="text-em-pink font-fredoka text-2xl font-medium">Configuração de Perfil</h1>
+        </div>
+      </header>
+
+      <div className="block w-full h-em-1 bg-white/10" />
+      <main>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">Nome</label>
+            <label className="block text-em-pink">Nome</label>
             <input
               type="text"
               value={name}
@@ -51,7 +58,7 @@ export default function UserProfile() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
+            <label className="block text-em-pink">Email</label>
             <input
               type="email"
               value={email}
@@ -61,7 +68,7 @@ export default function UserProfile() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Nova Senha</label>
+            <label className="block text-em-pink">Nova Senha</label>
             <input
               type="password"
               value={newPassword}
@@ -71,7 +78,7 @@ export default function UserProfile() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Confirme a Nova Senha</label>
+            <label className="block text-em-pink">Confirme a Nova Senha</label>
             <input
               type="password"
               value={confirmNewPassword}
@@ -84,7 +91,8 @@ export default function UserProfile() {
             Atualizar Perfil
           </button>
         </form>
-      </div>
+      </main>
+      <Navbar />
     </div>
   )
 }
