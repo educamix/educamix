@@ -51,7 +51,7 @@ npm run dev
 
 ## Apresentação
 
-![Vídeo pitch do Projeto](src/assets/apresentacao.mp4)
+![Vídeo pitch do Projeto](src/assets/pitch.zip)
 - Caminho > *src/assets/pitch.zip*
 
 ## Documentação
