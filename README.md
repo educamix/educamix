@@ -55,7 +55,7 @@ npm run dev
 - Caminho > *src/assets/pitch.zip*
 
 Vídeo apresentação do Projeto
-https://youtu.be/ZDp7yR-4AFk
+https://www.youtube.com/watch?v=GntOtYNDAKs
 
 ## Documentação
 ![Acesse a documentação](src/assets/Hackaton_FIAP.pdf)
