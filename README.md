@@ -51,8 +51,8 @@ npm run dev
 
 ## Apresentação
 
-![Vídeo apresentação desse Projeto](src/assets/apresentacao.mp4)
-- Caminho > *src/assets/apresentacao.zip*
+![Vídeo pitch do Projeto](src/assets/apresentacao.mp4)
+- Caminho > *src/assets/pitch.zip*
 
 ## Documentação
 ![Acesse a documentação](src/assets/Hackaton_FIAP.pdf)
