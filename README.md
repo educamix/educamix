@@ -17,7 +17,7 @@
 
 
 ## Descrição do Projeto
-Este projeto visa desenvolver uma interface gráfica intuitiva para gerenciar postagens, utilizando as tecnologias Vite, React e Tailwind CSS. A aplicação permite a criação, edição e leitura de posts, além de funcionalidades administrativas.
+Este projeto visa desenvolver uma interface gráfica intuitiva para gamificação educacional, gerenciar usuários, utilizando as tecnologias Vite, React e Tailwind CSS. A aplicação permite a criação, além de funcionalidades administrativas.
 
 ## Requisitos Técnicos
 A interface foi desenvolvida com **Vite** e **React**, utilizando **Tailwind CSS** para garantir um design responsivo. A integração é feita com a API desenvolvida na fase anterior:
