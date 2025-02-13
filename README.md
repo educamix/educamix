@@ -54,5 +54,8 @@ npm run dev
 ![Vídeo pitch do Projeto](src/assets/pitch.zip)
 - Caminho > *src/assets/pitch.zip*
 
+![Vídeo apresentação do Projeto](src/assets/video-mvp-educamix.zip)
+- Caminho > *src/assets/video-mvp-educamix.zip*
+
 ## Documentação
 ![Acesse a documentação](src/assets/Hackaton_FIAP.pdf)
