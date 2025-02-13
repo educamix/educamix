@@ -53,3 +53,6 @@ npm run dev
 
 ![Vídeo apresentação desse Projeto](src/assets/apresentacao.mp4)
 - Caminho > *src/assets/apresentacao.zip*
+
+## Documentação
+![Acesse a documentação](src/assets/Hackaton_FIAP.pdf)
